@@ -4,7 +4,6 @@ import sqlite3
 # construct a path to wherever your database exists
 # DB_FILEPATH = "module1-introduction-to-sql/chinook.db"
 # DB_FILEPATH = os.path.join(os.path.dirname(__file__), "..", "chinook.db") # ".." is to go up one folder
-
 DB_FILEPATH = os.path.join(os.path.dirname(__file__), "chinook.db")
 
 
