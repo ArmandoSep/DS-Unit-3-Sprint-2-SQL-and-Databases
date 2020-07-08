@@ -71,7 +71,7 @@ LIMIT 20;"
 result6 = cursor.execute(query).fetchall()
 print("RESULT 6: How many Items does each character have? (Return first 20 rows)", result6)
 
-# Query 7 - On average, how many Items does each Character have?
+# Query 7 - On average, how many Items does each Characters have?
 query = "SELECT \
 	count(chin.item_id) / CAST(count(distinct chin.character_id) as float) as avg_ch_items \
 FROM charactercreator_character_inventory chin;"
