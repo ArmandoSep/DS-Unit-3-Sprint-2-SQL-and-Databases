@@ -13,6 +13,7 @@ print("CONNECTION:", connection)
 cursor = connection.cursor()
 print("CURSOR", cursor)
 
+
 # Query 1 - How many total Characters are there?
 query = "SELECT count(DISTINCT character_id) as character_count FROM charactercreator_character;"
 
@@ -87,3 +88,9 @@ LEFT JOIN armory_weapon aw ON it.item_id = aw.item_ptr_id;"
 
 result8 = cursor.execute(query).fetchone()
 print("RESULT 8: On average, how many Weapons does each character have?", result8)
+
+
+# Query to create a list of duples and create a postgreSQL
+query0 = "SELECT * FROM armory_weapon;"
+result0 = cursor.execute(query0).fetchall()
+print(result0)
