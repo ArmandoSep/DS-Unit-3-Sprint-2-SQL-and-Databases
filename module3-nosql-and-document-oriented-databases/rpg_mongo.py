@@ -34,12 +34,12 @@ print("----------------")
 print("CLIENT:", type(client), client)
 print("DATABASES:", client.list_database_names)
 
-db = client.rpg_db # "rpg_db" or whatever you want to call it
+db = client.rpg_db # "rpg_db" or whatever you want to call the DB
 print("----------------")
 print("DB:", type(db), db)
 print("COLLECTIONS:", db.list_collection_names())
 
-collection = db.charactercreator_character # "charactercreator_character" or whatever you want to call it
+collection = db.armory_weapon # "charactercreator_character" or whatever you want to call the table
 print("----------------")
 print("COLLECTION:", type(collection), collection)
 print("DOCUMENTS COUNT (ROWS):", collection.count_documents({}))
@@ -53,15 +53,15 @@ connection = sqlite3.connect(DB_FILEPATH)
 connection.row_factory = sqlite3.Row
 cursor = connection.cursor()
 
-cursor.execute("SELECT * FROM charactercreator_character;")
+cursor.execute("SELECT * FROM armory_weapon;")
 column_names = [d[0] for d in cursor.description]
 
-# This only returns the last row, need to fix it!
+# PREPARING THE DATA
+characters = []
 for row in cursor:
-    characters = dict(zip(column_names, row))
-
+    info = dict(zip(column_names, row))
+    characters.append(info)
 
 # INSERTING THE DATA INTO THE MONGO DB
-
 collection.insert_many(characters)
 print("DOCUMENTS (ROWS) COUNT AFTER INSERTED DATA:", collection.count_documents({}))
